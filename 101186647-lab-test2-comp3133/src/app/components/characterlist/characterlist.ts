@@ -1,4 +1,4 @@
-import { Component, OnInit, inject } from '@angular/core';
+import { Component, OnInit, inject, ChangeDetectorRef } from '@angular/core';
 import { RouterModule } from '@angular/router';
 import { HarryPotterService } from '../../services/harrypotter';
 import { Character } from '../../models/character.model';
@@ -22,6 +22,7 @@ import { MatGridListModule } from '@angular/material/grid-list';
 })
 export class Characterlist implements OnInit {
   private hpService = inject(HarryPotterService);
+  private cdr = inject(ChangeDetectorRef);
 
   characters: Character[] = [];
   loading = false;
@@ -32,14 +33,17 @@ export class Characterlist implements OnInit {
 
   loadAllCharacters(): void {
     this.loading = true;
+
     this.hpService.getAllCharacters().subscribe({
       next: (data) => {
         this.characters = data;
         this.loading = false;
+        this.cdr.detectChanges();
       },
       error: (err) => {
         console.error('Error loading characters:', err);
         this.loading = false;
+        this.cdr.detectChanges();
       }
     });
   }
@@ -51,14 +55,17 @@ export class Characterlist implements OnInit {
     }
 
     this.loading = true;
+
     this.hpService.getCharactersByHouse(house).subscribe({
       next: (data) => {
         this.characters = data;
         this.loading = false;
+        this.cdr.detectChanges();
       },
       error: (err) => {
         console.error('Error filtering characters:', err);
         this.loading = false;
+        this.cdr.detectChanges();
       }
     });
   }
