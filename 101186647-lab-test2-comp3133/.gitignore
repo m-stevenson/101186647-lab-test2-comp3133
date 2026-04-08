@@ -38,7 +38,10 @@ yarn-error.log
 testem.log
 /typings
 __screenshots__/
+*.docx
+*.jpg
 
 # System files
 .DS_Store
 Thumbs.db
+.vercel
