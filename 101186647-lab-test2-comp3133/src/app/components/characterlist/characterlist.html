@@ -1,1 +1,37 @@
-<p>characterlist works!</p>
+<div class="page">
+  <h1>The Characters of Harry Potter</h1>
+
+  <app-characterfilter (houseSelected)="onHouseSelected($event)"></app-characterfilter>
+
+  @if (loading) {
+    <p>Loading...</p>
+  } @else {
+    <div class="card-grid">
+      @for (character of characters; track character.id) {
+        <mat-card class="character-card">
+          <img
+            mat-card-image
+            [src]="character.image || 'https://via.placeholder.com/300x400?text=No+Image'"
+            [alt]="character.name"
+          />
+
+          <mat-card-header>
+            <mat-card-title>{{ character.name }}</mat-card-title>
+            <mat-card-subtitle>
+              {{ character.house || 'No House' }}
+            </mat-card-subtitle>
+          </mat-card-header>
+
+          <mat-card-actions>
+            <button
+              mat-raised-button
+              color="primary"
+              [routerLink]="['/character', character.id]">
+              View Details
+            </button>
+          </mat-card-actions>
+        </mat-card>
+      }
+    </div>
+  }
+</div>
