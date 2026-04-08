@@ -1,7 +1,7 @@
 <mat-form-field appearance="outline" class="full-width">
   <mat-label>Filter by House</mat-label>
   <mat-select (selectionChange)="onHouseChange($event.value)">
-    <mat-option value="">All / X</mat-option>
+    <mat-option value="">All</mat-option>
     @for (house of houses.slice(1); track house) {
       <mat-option [value]="house">{{ house }}</mat-option>
     }
