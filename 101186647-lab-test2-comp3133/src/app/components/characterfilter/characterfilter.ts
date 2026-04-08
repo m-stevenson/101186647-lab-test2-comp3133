@@ -13,11 +13,11 @@ export class Characterfilter {
     @Output() houseSelected = new EventEmitter<string>();
 
     houses = [
-      "Gryffindor",
-      "Slytherin",
-      "Hufflepuff",
-      "Ravenclaw",
-      '',
+      "",
+      'Slytherin',
+      'Hufflepuff',
+      'Ravenclaw',
+      'Gryffindor',
     ];
 
     onHouseChange(value: string) {
