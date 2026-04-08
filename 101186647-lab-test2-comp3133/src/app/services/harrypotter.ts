@@ -19,7 +19,7 @@ export class HarryPotterService {
   }
 
   getCharacterById(id: string): Observable<Character[]>{
-    return this.http.get<Character[]>(`${this.apiUrl}/characters/${id}`)
+    return this.http.get<Character[]>(`${this.apiUrl}/character/${id}`)
   }
 
 }
