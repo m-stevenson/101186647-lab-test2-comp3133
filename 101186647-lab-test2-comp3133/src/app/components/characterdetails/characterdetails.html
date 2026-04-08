@@ -1,1 +1,31 @@
-<p>characterdetails works!</p>
+<div class="details-page">
+  <button mat-stroked-button routerLink="/">Back</button>
+
+  @if (loading) {
+    <p>Loading...</p>
+  }
+
+  @if (character) {
+    <mat-card class="details-card">
+      <img
+        mat-card-image
+        [src]="character.image"
+        [alt]="character.name"
+      />
+
+      <mat-card-content>
+        <h2>{{ character.name }}</h2>
+        <p><strong>Species:</strong> {{ character.species || 'Unknown' }}</p>
+        <p><strong>House:</strong> {{ character.house || 'Houseless' }}</p>
+        <p><strong>Wizard:</strong> {{ character.wizard ? 'Yes' : 'No' }}</p>
+        <p><strong>Ancestry:</strong> {{ character.ancestry || 'Unknown' }}</p>
+        <p><strong>Actor:</strong> {{ character.actor || 'Unknown' }}</p>
+
+        <h3>Wand</h3>
+        <p><strong>Wood:</strong> {{ character.wand?.wood || 'Unknown' }}</p>
+        <p><strong>Core:</strong> {{ character.wand?.core || 'Unknown' }}</p>
+        <p><strong>Length:</strong> {{ character.wand?.length ?? 'Unknown' }}</p>
+      </mat-card-content>
+    </mat-card>
+  }
+</div>
